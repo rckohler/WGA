@@ -2,15 +2,16 @@ package com.example.simpleanimation;
 import android.graphics.Rect;
 import android.graphics.RectF;
 enum MoveDirection{north, northEast, east, southEast, south, southWest, west, northWest};
+
 public class AnimatedObject {
-	int bitmapName;
+	int bitmapName; //name of bitmap stored in res/drawable
 	MoveDirection direction = MoveDirection.north;
-	float radius=50;
-	float rx=50,ry=50;
-	RectF size = new RectF();
-	Rect frame = new Rect();
-	Animation a;
-	int speed =5;
+	float radius=50; // radius of object
+	float rx=50,ry=50; //position of object on x and y axis
+	RectF size = new RectF(); //used for drawing object
+	Rect frame = new Rect(); // used for drawing object
+	Animation a; // animation used by this animated object (another class)
+	int speed =5; // speed of object not speed of animation
 	int destinationX, destinationY;
 
 	public AnimatedObject(MoveDirection startDirection, int location){
@@ -20,7 +21,7 @@ public class AnimatedObject {
 		destinationY = (int) ry;
 		direction = startDirection;
 		size.set(rx-radius, ry-radius, rx+radius, ry+radius);
-		a = new Animation(AnimationModel.captain,AnimationType.directional);
+		a = new Animation(AnimationModel.captain,AnimationType.directional); // animations are created bu telling them 
 	}
 	public void setDestination(int newDestinationX, int newDestinationY){
 		destinationX = newDestinationX;

@@ -121,7 +121,7 @@ public class AnimationView extends View {
 		update();
 		drawGuys(canvas);
 				try {  
-			Thread.sleep(300);   
+			Thread.sleep(30);   
 		} catch (InterruptedException e) { }      
 		invalidate(); 	}
 }

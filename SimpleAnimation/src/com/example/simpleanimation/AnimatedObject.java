@@ -23,6 +23,15 @@ public class AnimatedObject {
 		size.set(rx-radius, ry-radius, rx+radius, ry+radius);
 		a = new Animation(AnimationModel.captain,AnimationType.directional); // animations are created bu telling them 
 	}
+	public AnimatedObject(MoveDirection startDirection,AnimationModel am, AnimationType at, int location){
+		rx = location*50 + 50;
+		ry = location*50 + 50;
+		destinationX = (int) rx;
+		destinationY = (int) ry;
+		direction = startDirection;
+		size.set(rx-radius, ry-radius, rx+radius, ry+radius);
+		a = new Animation(am,at); // animations are created bu telling them 
+	}
 	public void setDestination(int newDestinationX, int newDestinationY){
 		destinationX = newDestinationX;
 		destinationY = newDestinationY;

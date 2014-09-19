@@ -1,9 +1,9 @@
 package com.example.simpleanimation;
 
-public class NewGuy extends AnimatedObject {
+public class NewGuy {
 
 	public NewGuy(MoveDirection startDirection, int location) {
-		super(startDirection, location);
+
 		// TODO Auto-generated constructor stub
 	}
 	public void badAssAttack(){

@@ -33,7 +33,7 @@ public class AnimationView extends View {
 	}
 
 	private void setUp(){
-		animatedObjects.add(new AnimatedObject(MoveDirection.east,1));
+		animatedObjects.add(new AnimatedObject(MoveDirection.east,AnimationModel.captain,AnimationType.directional,1));
 		player = animatedObjects.elementAt(0);
 
 		for (int i=0; i< animatedObjects.size(); i++)
@@ -75,38 +75,73 @@ public class AnimationView extends View {
 						frameWidth+animation.animationCount*frameWidth-currentRow*width,//right
 						currentRow*frameHeight+frameHeight//bottom
 						); //(left,top,right,bottom)
+			if (animation.animationType==AnimationType.directionalLR){
+				int left=0, right=0, top=0, bottom=0;
+				switch(animatedObject.direction){
+				case east:
+					top= animation.east*frameHeight;
+					break;
+				case north:
+					top = animation.north*frameHeight;
+					break;
+				case northEast:
+					top =animation.northeast*frameHeight;
+					break;
+				case northWest:
+					top =animation.northwest*frameHeight;
+					break;
+				case south:
+					top = animation.south*frameHeight;
+					break;
+				case southEast:
+					top = animation.southeast*frameHeight;
+					break;
+				case southWest: 
+					top = animation.southwest*frameHeight;
+					break;
+				case west:
+					top = animation.west*frameHeight;
+					break;
+				default:
+					break;	
+				}			
+				left = animation.animationCount*frameWidth;
+				right = left + frameWidth;
+				bottom = top + frameHeight;
+				frame.set(left,top,right,bottom);
+			}
 			if (animation.animationType==AnimationType.directional){
 				int left=0, right=0, top=0, bottom=0;
 				switch(animatedObject.direction){
 				case east:
-					left = 6*frameWidth;
+					left= animation.east*frameWidth;
 					break;
 				case north:
-					left = 4*frameWidth;
+					left = animation.north*frameWidth;
 					break;
 				case northEast:
-					left =5*frameWidth;
+					left =animation.northeast*frameWidth;
 					break;
 				case northWest:
-					left =3*frameWidth;
+					left =animation.northwest*frameWidth;
 					break;
 				case south:
-					left = 0;
+					left = animation.south*frameWidth;
 					break;
 				case southEast:
-					left = 7*frameWidth;
+					left = animation.southeast*frameWidth;
 					break;
 				case southWest: 
-					left = frameWidth;
+					left = animation.southwest*frameWidth;
 					break;
 				case west:
-					left =	2*frameWidth;
+					left = animation.west*frameWidth;
 					break;
 				default:
-					break;
-				}
+					break;	
+				}			
+				top = animation.animationCount*frameHeight;
 				right = left + frameWidth;
-				top  = animation.animationCount*frameHeight; 
 				bottom = top + frameHeight;
 				frame.set(left,top,right,bottom);
 			}
@@ -121,7 +156,7 @@ public class AnimationView extends View {
 		update();
 		drawGuys(canvas);
 				try {  
-			Thread.sleep(30);   
+			Thread.sleep(300);   
 		} catch (InterruptedException e) { }      
 		invalidate(); 	}
 }

@@ -14,18 +14,9 @@ public class AnimatedObject {
 	int speed =5; // speed of object not speed of animation
 	int destinationX, destinationY;
 
-	public AnimatedObject(MoveDirection startDirection, int location){
-		rx = location*50 + 50;
-		ry = location*50 + 50;
-		destinationX = (int) rx;
-		destinationY = (int) ry;
-		direction = startDirection;
-		size.set(rx-radius, ry-radius, rx+radius, ry+radius);
-		a = new Animation(AnimationModel.captain,AnimationType.directional); // animations are created bu telling them 
-	}
-	public AnimatedObject(MoveDirection startDirection,AnimationModel am, AnimationType at, int location){
-		rx = location*50 + 50;
-		ry = location*50 + 50;
+	public AnimatedObject(MoveDirection startDirection,AnimationModel am, AnimationType at, double location){
+		rx = (float) (location*50 + 50);
+		ry = (float) (location*50 + 50);
 		destinationX = (int) rx;
 		destinationY = (int) ry;
 		direction = startDirection;
